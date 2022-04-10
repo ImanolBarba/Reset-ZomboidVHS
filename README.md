@@ -13,6 +13,7 @@ NOTE: Because the devs decided that local storage is a great idea for Multiplaye
 
 How to use this?
 --
+The save data for recorded media for multiplayer games is stored in your computer. So basically this is a script meant to be run locally on the computer you use to play the game
 
 **Windows**:
 ```
