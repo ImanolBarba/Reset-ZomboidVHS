@@ -7,7 +7,6 @@ import os
 import shutil
 import struct
 import sys
-import traceback
 
 # Constants
 
@@ -28,7 +27,6 @@ def backupFile(filename: str) -> bool:
         # As long as we fail in any case and notify the user gracefully it 
         # should be fine
         logger.error(f"Failed to write backup: {str(e)}")
-        logger.error(f"Stacktrace:\n{traceback.format_exc()}")
     return False
 
 
