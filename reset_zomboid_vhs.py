@@ -41,19 +41,18 @@ def resetZomboidVHS(server_name: str, server_port: int, username: str) -> bool:
             return False
         print(f"Backed up to {targetFile}.bak")
         
-        fd = open(targetFile, "rb+")
-        # Skip first uint32 (No idea what it is, seems to be always 1)
-        fd.seek(4)
-        # Read second uint32 with BE ordering
-        numEntries = struct.unpack(">I",fd.read(4))[0]
-        # Every entry in this offset is an uint16 and the string representation
-        # of an uuid (36 bytes).
-        offset = numEntries * (2 + 36)
-        fd.seek(offset, 1)
-        fd.write(b'\x00' * 8)
-        fd.truncate(8 + offset + 8)
-        fd.close()
-        print("Successfully reset VHS!")
+        with open(targetFile, "rb+") as fd:
+            # Skip first uint32 (No idea what it is, seems to be always 1)
+            fd.seek(4)
+            # Read second uint32 with BE ordering
+            numEntries = struct.unpack(">I",fd.read(4))[0]
+            # Every entry in this offset is an uint16 and the string representation
+            # of an uuid (36 bytes).
+            offset = numEntries * (2 + 36)
+            fd.seek(offset, 1)
+            fd.write(b'\x00' * 8)
+            fd.truncate(8 + offset + 8)
+            print("Successfully reset VHS!")
         return True
     else:
         print(f"Unable to find target save file {targetFile}. Check input parameters")
