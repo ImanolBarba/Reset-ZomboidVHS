@@ -76,16 +76,16 @@ function Reset-ZomboidVHS([string]$server_name, [int]$server_port, [string]$user
         Write-Output ("Backed up to {0}.bak" -f $target_file)        
         $fd = [System.IO.File]::Open($target_file, [System.IO.FileMode]::Open, [System.IO.FileAccess]::ReadWrite)
         $buf = New-Object byte[] 4
-        # Skip first byte 
+        # Skip first uint32 (No idea what it is, seems to be always 1)
         $fd.Seek(4, [System.IO.SeekOrigin]::Begin) | Out-Null
-        # Read second byte
+        # Read second uint32
         $fd.Read($buf, 0, 4) | Out-Null
         # Reverse, since the number is BE
         [array]::Reverse($buf)
         $num_entries = [System.BitConverter]::ToUInt32($buf,0)
         # Every entry in this offset is an uint16 and the string representation
         # of an uuid (36 bytes).
-        $offset = $num_entries * (36 + 2)
+        $offset = $num_entries * (2 + 36)
         $buf = New-Object byte[] 8
         $fd.Seek($offset, [System.IO.SeekOrigin]::Current) | Out-Null
         $fd.Write($buf, 0, 8)
