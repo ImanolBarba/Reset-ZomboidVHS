@@ -65,8 +65,8 @@ def main() -> int:
     logger = logging.getLogger(__name__)
 
     if sys.version_info.major < 3 or (sys.version_info.major == 3 and sys.version_info.minor < 7):
-        logger.error("This bot requires at least Python 3.7 to run")
-        exit(1)
+        logger.error("This script requires at least Python 3.7 to run")
+        return 1
     
     parser = argparse.ArgumentParser(description="Reset Zomboid VHS tapes")
     parser.add_argument("--server-name", type=str, required=True, help="Hostname or IP you specified to connect to the PZ server")
