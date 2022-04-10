@@ -31,4 +31,12 @@ See:
   Whichever username you used to connect, NOT the player name
 ```
 
+Oh no, something went HORRIBLY wrong!
+--
+Don't worry, this script backs up the `recorded_media.bin` file in the same directory that it edits it, so just replace the file back and everything's gucci
+
+The file is in `%USERPROFILE%\Zomboid\Saves\Multiplayer\${server_name}_${server_port}_$(md5{username})/recorded_media.bin`
+
+It'll also be shown in the script output
+
 Cheers
