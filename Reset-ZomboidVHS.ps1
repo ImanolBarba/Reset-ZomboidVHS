@@ -71,7 +71,9 @@ function Reset-ZomboidVHS([string]$server_name, [int]$server_port, [string]$user
 
     $target_file = "{0}\{1}_{2}_{3}\recorded_media.bin" -f $DEFAULT_PZ_SAVE_PATH,$server_name,$server_port,$username_hash
     if(Test-Path $target_file) {
+        Write-Output ("Editing {0} ..." -f $target_file)
         Backup-File -filename $target_file
+        Write-Output ("Backed up to {0}.bak" -f $target_file)        
         $fd = [System.IO.File]::Open($target_file, [System.IO.FileMode]::Open, [System.IO.FileAccess]::ReadWrite)
         $buf = New-Object byte[] 4
         # Skip first byte 
