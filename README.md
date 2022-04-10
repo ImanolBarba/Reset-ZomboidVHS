@@ -13,6 +13,8 @@ NOTE: Because the devs decided that local storage is a great idea for Multiplaye
 
 How to use this?
 --
+
+**Windows**:
 On a powershell console:
 
 ```
@@ -30,6 +32,14 @@ See:
 .PARAMETER username
   Whichever username you used to connect, NOT the player name
 ```
+
+**Linux/macOS**:
+```
+python3 reset_zomboid_vhs.py --server-name xxxx --server-port xxxx --username xxxx
+```
+
+NOTE: Requires at least python 3.7
+
 
 Oh no, something went HORRIBLY wrong!
 --
