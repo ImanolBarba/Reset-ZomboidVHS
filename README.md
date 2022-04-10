@@ -15,8 +15,6 @@ How to use this?
 --
 
 **Windows**:
-On a powershell console:
-
 ```
 PS C:\Users\imanol> .\Reset-ZomboidVHS.ps1 -server_name xxxx -server_port xxxx -username xxxx
 ```
